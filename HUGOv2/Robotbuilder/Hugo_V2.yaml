@@ -16,7 +16,7 @@ Children:
             validators: &id002 [CANID]
             value: '1'
         Base: Talon SRX
-        Name: Motor 1
+        Name: Motor Front Left
       - Children: []
         Properties:
           CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -26,14 +26,14 @@ Children:
             validators: *id002
             value: '2'
         Base: Talon SRX
-        Name: Motor 2
+        Name: Motor Front Right
       Properties:
         Right Motor: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 1
           name: Right Motor
           type: PIDOutput
           validators: [RobotDrive2, ChildDropdownSelected]
-          value: Drive base Motor 2
+          value: Drive base Motor Front Right
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
         Left Motor: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -41,7 +41,7 @@ Children:
           name: Left Motor
           type: PIDOutput
           validators: [RobotDrive2, ChildDropdownSelected]
-          value: Drive base Motor 1
+          value: Drive base Motor Front Left
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
         Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
@@ -57,7 +57,7 @@ Children:
           validators: *id002
           value: '3'
       Base: Talon SRX
-      Name: Motor 3
+      Name: Motor Rear Left
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -67,7 +67,7 @@ Children:
           validators: *id002
           value: '4'
       Base: Talon SRX
-      Name: Motor 4
+      Name: Motor Rear Right
     - Children: []
       Properties:
         Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
