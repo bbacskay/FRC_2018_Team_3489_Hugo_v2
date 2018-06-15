@@ -43,7 +43,7 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.drivebase.tankDrive(Robot.oi.leftJoystick, Robot.oi.rightJoystick);
+    	Robot.drivebase.tankDriveTeleop(Robot.oi.leftJoystick, Robot.oi.rightJoystick);
     }
 
     // Make this return true when this Command no longer needs to run execute()

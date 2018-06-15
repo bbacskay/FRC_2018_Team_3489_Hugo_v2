@@ -52,6 +52,16 @@ public class Drivebase extends Subsystem {
      */
     public Drivebase() {
 		driveMode();
+		
+		// Initialize motors
+		motorFrontLeft.setInverted(true);
+		motorFrontRight.setInverted(true);
+		motorRearLeft.setInverted(true);
+		motorRearRight.setInverted(true);
+		
+		// Activate following mode for the slave motors
+		motorRearLeft.follow(motorFrontLeft);
+    	motorRearRight.follow(motorFrontRight);
 	}
     
     @Override
@@ -75,29 +85,32 @@ public class Drivebase extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void stop() {
-    	driveTrain.tankDrive(0,0);
-    }
-    
-    public void tankDrive(Joystick leftJoy, Joystick rightJoy) {
-    	double lValue;
-    	double rValue;
-    	
-    	lValue = leftJoy.getY() * -0.85;
-    	rValue = rightJoy.getY() * -0.85;
-    	
-    	motorRearLeft.follow(motorFrontLeft);
-    	motorRearRight.follow(motorFrontRight);
-    	
-    	driveTrain.tankDrive(lValue, rValue);
-    }
-    
     public void driveMode() {
     	rocketBoxShifter.set(Value.kReverse);
     }
     
     public void climbMode() {
     	rocketBoxShifter.set(Value.kForward);
+    }
+    
+    
+    public void stop() {
+    	driveTrain.tankDrive(0,0);
+    }
+    
+    public void tankDriveTeleop(Joystick leftJoy, Joystick rightJoy) {
+    	double lValue;
+    	double rValue;
+    	
+    	lValue = leftJoy.getY() * -0.85;
+    	rValue = rightJoy.getY() * -0.85;
+    	
+    	
+    	driveTrain.tankDrive(lValue, rValue);
+    }
+    
+    public void tankDrive(double leftSpeed, double rightSpeed) {
+    	driveTrain.tankDrive(leftSpeed, rightSpeed);
     }
     
 }
