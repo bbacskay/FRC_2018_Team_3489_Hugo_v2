@@ -9,9 +9,9 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3489.HUGOv2.commands;
+package org.usfirst.frc3489.FEMAv2.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc3489.HUGOv2.Robot;
 
 /**
  *

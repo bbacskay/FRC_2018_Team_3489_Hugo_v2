@@ -9,13 +9,15 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3489.HUGOv2;
+package org.usfirst.frc3489.FEMAv2;
 
-import org.usfirst.frc3489.HUGOv2.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc3489.FEMAv2.commands.*;
+import org.usfirst.frc3489.FEMAv2.subsystems.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
-import org.usfirst.frc3489.HUGOv2.subsystems.*;
 
 
 /**
