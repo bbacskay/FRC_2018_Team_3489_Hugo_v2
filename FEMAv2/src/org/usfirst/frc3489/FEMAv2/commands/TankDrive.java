@@ -10,9 +10,8 @@
 
 
 package org.usfirst.frc3489.FEMAv2.commands;
-import org.usfirst.frc3489.FEMAv2.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc3489.FEMAv2.Robot;
 
 /**
  *
@@ -44,7 +43,11 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.drivebase.tankDriveTeleop(Robot.oi.leftJoystick, Robot.oi.rightJoystick);
+    	Robot.driveSystem.tankDrive(Robot.oi.joystickLeft, Robot.oi.joystickRight);
+    	
+    	if (Robot.oi.joystickLeft.getPOV() == 0 && Robot.oi.joystickRight.getPOV() == 0) {
+    		Robot.driveSystem.releaseClimber(Robot.endGame);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,12 +59,13 @@ public class TankDrive extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	Robot.drivebase.stop();
+    	Robot.driveSystem.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    	end();
     }
 }
