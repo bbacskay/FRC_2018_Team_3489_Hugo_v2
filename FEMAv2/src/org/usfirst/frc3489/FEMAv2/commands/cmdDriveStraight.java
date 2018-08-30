@@ -45,11 +45,17 @@ public class cmdDriveStraight extends Command {
     	Robot.driveSystem.resetEncoders();
     	heading = Robot.driveSystem.getHeading();
     	System.out.println("Drive staight started param: " + m_distance);
+    	if ( m_distance >= 0) {
+    		Robot.driveSystem.driveStraight(0.6);
+    	} else {
+    		Robot.driveSystem.driveStraight(-0.6);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+/*    	
     if(m_distance >= 0) {
     	//System.out.println(Robot.driveSystem.getRightEncoder());
     	if (Math.abs(heading - Robot.driveSystem.getHeading()) <= ANGLE_OFFSET &&
@@ -79,6 +85,7 @@ public class cmdDriveStraight extends Command {
         		Robot.driveSystem.move(-0.65, -0.7);
         }
     }
+ */
     }
 
     // Make this return true when this Command no longer needs to run execute()

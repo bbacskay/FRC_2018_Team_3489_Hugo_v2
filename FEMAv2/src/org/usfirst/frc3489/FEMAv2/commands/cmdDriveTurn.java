@@ -44,15 +44,19 @@ public class cmdDriveTurn extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	m_targetHeading = Robot.driveSystem.getHeading() + m_angle;
-    	
+    	//m_targetHeading = Robot.driveSystem.getHeading() + m_angle;
+    	m_targetHeading = m_angle;
+    	/*
     	if (m_targetHeading < 0) {
     		m_targetHeading += 360;
-    		speed *= -1;
+    		//speed *= -1;
     	} else if (m_targetHeading > 360) {
     		m_targetHeading -= 360;
-    		speed *= -1;
+    		//speed *= -1;
     	}
+    	*/
+    	
+    	Robot.driveSystem.turnToAngle(m_targetHeading);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -62,17 +66,21 @@ public class cmdDriveTurn extends Command {
 
     	System.out.println("Heading: " + heading + "  targetHeading: " + m_targetHeading);	
     	
+/*    	
     	if (heading > m_targetHeading) {
 			Robot.driveSystem.move(-speed, speed);
 		} else if (heading < m_targetHeading) {
 			Robot.driveSystem.move(speed, -speed);
 		}
+*/
     }
 
+    	
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return (Math.abs(heading - m_targetHeading) <= 0.25);
+        //return (Math.abs(heading - m_targetHeading) <= 0.25);
+    	return Robot.driveSystem.getPidOk();
     }
 
     // Called once after isFinished returns true
@@ -85,5 +93,6 @@ public class cmdDriveTurn extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    	Robot.driveSystem.stop();	
     }
 }
