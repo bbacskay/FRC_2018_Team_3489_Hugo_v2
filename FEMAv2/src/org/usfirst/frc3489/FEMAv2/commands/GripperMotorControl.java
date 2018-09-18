@@ -43,7 +43,11 @@ public class GripperMotorControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	Robot.gripper.grippermotors(Robot.oi.joystickMani.getY());
+    	if(Math.abs(Robot.oi.joystickMani.getY()) > 0.1) {
+    		Robot.gripper.gripperinout(Robot.oi.joystickMani.getY());
+    	} else {
+    		Robot.gripper.gripperrotate(Robot.oi.joystickMani.getZ());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

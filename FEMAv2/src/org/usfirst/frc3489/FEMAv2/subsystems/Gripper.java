@@ -78,12 +78,21 @@ public class Gripper extends Subsystem {
     	gripper20Psi.set(true);
     }
     
-    public void grippermotors(double speed) {
+    public void gripperinout(double speed) {
     	double inputFactor = 1;
     	double motorPower;
     	
     	motorPower = inputFactor * speed;
     	leftIntake.set(-motorPower);
+    	rightIntake.set(motorPower);
+    }
+    
+    public void gripperrotate(double speed) {
+    	double inputFactor = 1;
+    	double motorPower;
+    	
+    	motorPower = inputFactor * speed;
+    	leftIntake.set(motorPower);
     	rightIntake.set(motorPower);
     }
 
