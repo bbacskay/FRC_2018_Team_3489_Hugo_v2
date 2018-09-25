@@ -46,7 +46,7 @@ public class cmdDriveStraight extends Command {
     	heading = Robot.driveSystem.getHeading();
     	System.out.println("Drive staight started param: " + m_distance);
     	if ( m_distance >= 0) {
-    		Robot.driveSystem.driveStraight(0.6);
+    		Robot.driveSystem.driveStraight(0.4);
     	} else {
     		Robot.driveSystem.driveStraight(-0.6);
     	}
